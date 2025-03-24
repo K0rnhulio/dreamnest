@@ -15,6 +15,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       clientSecret: env.GITHUB_SECRET,
     }),
   ],
+  secret: "NEXTAUTH_SECRET_DEVELOPMENT_ONLY",
   callbacks: {
     async session({ session, user }) {
       if (!session.user) return session;

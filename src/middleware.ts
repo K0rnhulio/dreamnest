@@ -1,10 +1,8 @@
 import type { NextRequest } from 'next/server';
 
-import { middleware as paraglide } from '@/lib/i18n';
-
 export function middleware(request: NextRequest) {
-  const response = paraglide(request);
-  return response;
+  // No language handling needed
+  return null;
 }
 
 export const config = {

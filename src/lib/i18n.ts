@@ -1,16 +1,19 @@
-import { Middleware, Navigation, PrefixStrategy } from '@inlang/paraglide-next';
+// Minimal i18n implementation without language switching functionality
+import { NextRequest } from 'next/server';
 
-import type { AvailableLanguageTag } from '@/paraglide/runtime';
+// Define a single language tag
+export type AvailableLanguageTag = 'en';
+export const availableLanguageTags: AvailableLanguageTag[] = ['en'];
+export const sourceLanguageTag: AvailableLanguageTag = 'en';
 
-const strategy = PrefixStrategy<AvailableLanguageTag>({
-  prefixDefault: 'never',
+// Empty middleware for server-side
+export const middleware = (request: NextRequest) => {
+  return null;
+};
 
-  // don't generate alternate routes for the api
-  exclude: (pathname) => {
-    return pathname.startsWith('/api/') || pathname === '/api';
-  },
-});
+// Simple strategy object
+const strategy = {
+  getLanguageTag: () => 'en' as AvailableLanguageTag,
+};
 
-export const middleware = Middleware({ strategy });
-export const { Link, useRouter, usePathname, redirect, permanentRedirect } =
-  Navigation({ strategy });
+export default strategy;

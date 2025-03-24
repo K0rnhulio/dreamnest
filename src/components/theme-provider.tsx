@@ -1,10 +1,15 @@
 'use client';
 
-import { ComponentProps } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 import { ThemeProvider as NextThemesProvider } from 'next-themes';
 
-type ThemeProviderProps = ComponentProps<typeof NextThemesProvider>;
+// Modified to force light mode
+type ThemeProviderProps = {
+  children: ReactNode;
+  // We're removing other props since we're forcing light mode
+};
 
-export const ThemeProvider = ({ children, ...props }: ThemeProviderProps) => {
-  return <NextThemesProvider {...props}>{children}</NextThemesProvider>;
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+  // Force light theme with forcedTheme prop
+  return <NextThemesProvider forcedTheme="light" disableTransitionOnChange>{children}</NextThemesProvider>;
 };
