@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useId, useMemo, useEffect, useState } from "react";
+import React, { useId, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { motion, useAnimation } from "framer-motion";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import type { Container, SingleOrMultiple, ISourceOptions } from "@tsparticles/engine";
+import type { Container, ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
 type ModernParticlesProps = {
@@ -67,46 +67,11 @@ export function ModernParticles({
   const actualLineColor = lineColor || particleColor;
   
   const options: ISourceOptions = {
-    background: {
-      color: {
-        value: background,
-      },
-    },
     fullScreen: {
       enable: false,
       zIndex: -1,
     },
     fpsLimit: 60,
-    interactivity: {
-      events: {
-        onClick: {
-          enable: true,
-          mode: "push",
-        },
-        onHover: {
-          enable: true,
-          mode: "repulse",
-          parallax: {
-            enable: false,
-            force: 2,
-            smooth: 10,
-          },
-        },
-        resize: {
-          enable: true,
-          delay: 0.5,
-        },
-      },
-      modes: {
-        push: {
-          quantity: 4,
-        },
-        repulse: {
-          distance: 100,
-          duration: 0.4,
-        },
-      },
-    },
     particles: {
       color: {
         value: particleColor,
@@ -117,10 +82,6 @@ export function ModernParticles({
         enable: true,
         opacity: lineOpacity,
         width: lineWidth,
-        triangles: {
-          enable: false,
-          opacity: 0.1
-        }
       },
       move: {
         direction: "none",
@@ -128,45 +89,23 @@ export function ModernParticles({
         outModes: {
           default: "out",
         },
-        random: true,
         speed: speed,
         straight: false,
-        trail: {
-          enable: false,
-          length: 5,
-          fillColor: background
-        }
       },
       number: {
         density: {
           enable: true,
-          area: 800,
         },
         value: particleDensity,
-        limit: 0
       },
       opacity: {
         value: 0.7,
-        random: true,
-        animation: {
-          enable: true,
-          speed: 0.5,
-          minimumValue: 0.3,
-          sync: false
-        }
       },
       shape: {
         type: "circle",
       },
       size: {
         value: { min: minSize, max: maxSize },
-        random: true,
-        animation: {
-          enable: true,
-          speed: 1,
-          minimumValue: 0.5,
-          sync: false
-        }
       },
     },
     detectRetina: true,
@@ -178,6 +117,7 @@ export function ModernParticles({
         animate={controls} 
         initial={{ opacity: 0 }}
         className="absolute inset-0 -z-10"
+        style={{ backgroundColor: background }}
       >
         {init && (
           <Particles
