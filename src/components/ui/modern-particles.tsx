@@ -31,7 +31,7 @@ export function ModernParticles({
   minSize = 0.8,
   maxSize = 2,
   speed = 1,
-  particleColor = "#ff69b4",
+  particleColor = "hsl(320, 70%, 55%)",
   particleDensity = 80,
   lineWidth = 0.8,
   lineColor,
@@ -63,8 +63,8 @@ export function ModernParticles({
     }
   };
 
-  // Use the provided line color or default to particle color
-  const actualLineColor = lineColor || particleColor;
+  // Use the provided line color or default to a complementary color
+  const actualLineColor = lineColor || "hsl(262, 60%, 60%)";
   
   const options: ISourceOptions = {
     fullScreen: {
