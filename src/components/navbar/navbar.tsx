@@ -1,8 +1,7 @@
+import Link from 'next/link';
 import { auth } from '@/app/api/auth/[...nextauth]/auth-options';
 import { SignInButton } from '@/components/navbar/sign-in-button';
 import { UserDropdown } from '@/components/navbar/user-dropdown';
-import { Link } from '@/lib/i18n';
-import * as m from '@/paraglide/messages';
 import { Heart } from 'lucide-react';
 
 export const Navbar = async () => {
@@ -19,7 +18,7 @@ export const Navbar = async () => {
             <Heart className="h-8 w-8 text-pink-400" fill="rgba(236, 72, 153, 0.3)" strokeWidth={1.5} />
           </div>
           <span className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500">
-            {m.app_name()}
+            DreamNest
           </span>
         </Link>
         <div className="flex items-center gap-2">
