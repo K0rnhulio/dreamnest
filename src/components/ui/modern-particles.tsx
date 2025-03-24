@@ -27,11 +27,11 @@ type ModernParticlesProps = {
 export function ModernParticles({
   id,
   className,
-  background = "transparent",
+  background = "#DEEFF2",
   minSize = 0.8,
   maxSize = 2,
   speed = 1,
-  particleColor = "hsl(320, 70%, 55%)",
+  particleColor = "#A1B9F9",
   particleDensity = 80,
   lineWidth = 0.8,
   lineColor,
@@ -63,8 +63,8 @@ export function ModernParticles({
     }
   };
 
-  // Use the provided line color or default to a complementary color
-  const actualLineColor = lineColor || "hsl(262, 60%, 60%)";
+  // Use the provided line color or default to CAD4FF
+  const actualLineColor = lineColor || "#CAD4FF";
   
   const options: ISourceOptions = {
     fullScreen: {
